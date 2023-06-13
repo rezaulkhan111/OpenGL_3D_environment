@@ -270,6 +270,62 @@ void Siri()
 }
 
 
+void drawTree() {
+
+    // Draw the trunk
+    glPushMatrix();
+    glTranslated(33,-5,25);
+    glScaled(1,20,1);
+    cube(0.6, 0.3, 0.0);
+    glPopMatrix();
+
+    // cirle one
+    glPushMatrix();
+    glTranslated(32,15,25);
+    cube(0.0, 0.4, 0.0);
+    glutSolidSphere(3.0, 32, 32);
+    glPopMatrix();
+
+     // cirle two
+    glPushMatrix();
+    glTranslated(32,12,25);
+    cube(0.0, 0.4, 0.0);
+    glutSolidSphere(3.0, 32, 32);
+    glPopMatrix();
+
+    // cirle tree
+    glPushMatrix();
+    glTranslated(34,12,25);
+    cube(0.0, 0.4, 0.0);
+    glutSolidSphere(3.0, 20, 20);
+    glPopMatrix();
+}
+
+void drawTreeOne() {
+
+    // Draw the trunk
+    glPushMatrix();
+    glTranslated(27,-5,20);
+    glScaled(1,20,1);
+    cube(0.6, 0.3, 0.0);
+    glPopMatrix();
+
+    // cirle one
+    glPushMatrix();
+    glTranslated(27,15,20);
+    cube(0.0, 0.4, 0.0);
+    glutSolidSphere(3.0, 32, 32);
+    glPopMatrix();
+
+     // cirle two
+    glPushMatrix();
+    glTranslated(27,12,20);
+    cube(0.0, 0.4, 0.0);
+    glutSolidSphere(3.0, 32, 32);
+    glPopMatrix();
+}
+
+
 static void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -305,6 +361,9 @@ static void display(void)
     horizontalRoofTop();
 
     Siri();
+
+    drawTree();
+    drawTreeOne();
 
 
     glutSwapBuffers();
