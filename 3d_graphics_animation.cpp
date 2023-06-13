@@ -166,7 +166,7 @@ void horizontalRoofTop()
     glPopMatrix();
 }
 
-void Siri()
+void stairs()
 {
     /// 12
     glPushMatrix();
@@ -180,7 +180,7 @@ void Siri()
     glScaled(3,1,1);
     cube(0.0,0.5,0.5);
     glPopMatrix();
-     /// 10
+    /// 10
     glPushMatrix();
     glTranslated(4,10,17);
     glScaled(3,1,1);
@@ -254,14 +254,14 @@ void Siri()
 
     /// siri piller
 
-       /// small
+    /// small
     glPushMatrix();
     glTranslated(3.5,0,12);
     glScaled(1,6.5,1);
     cube(0.0,0.5,1.0);
     glPopMatrix();
 
-     /// big
+    /// big
     glPushMatrix();
     glTranslated(6,0,19);
     glScaled(1,12,1);
@@ -270,8 +270,8 @@ void Siri()
 }
 
 
-void drawTree() {
-
+void drawTree()
+{
     // Draw the trunk
     glPushMatrix();
     glTranslated(33,-5,25);
@@ -286,7 +286,7 @@ void drawTree() {
     glutSolidSphere(3.0, 32, 32);
     glPopMatrix();
 
-     // cirle two
+    // cirle two
     glPushMatrix();
     glTranslated(32,12,25);
     cube(0.0, 0.4, 0.0);
@@ -301,8 +301,8 @@ void drawTree() {
     glPopMatrix();
 }
 
-void drawTreeOne() {
-
+void drawTreeOne()
+{
     // Draw the trunk
     glPushMatrix();
     glTranslated(27,-5,20);
@@ -317,7 +317,7 @@ void drawTreeOne() {
     glutSolidSphere(3.0, 32, 32);
     glPopMatrix();
 
-     // cirle two
+    // cirle two
     glPushMatrix();
     glTranslated(27,12,20);
     cube(0.0, 0.4, 0.0);
@@ -325,6 +325,69 @@ void drawTreeOne() {
     glPopMatrix();
 }
 
+void drawHuman()
+{
+    // Draw head
+    glColor3f(1.0, 0.8, 0.6); // Skin color for the head
+    glPushMatrix();
+    glTranslatef(0.0, 3.5, 35.0); // Adjust the position of the head
+    glutSolidSphere(0.3, 16, 16);
+    glPopMatrix();
+
+    // Draw body
+    glColor3f(0.0, 0.0, 1.0); // Blue color for the body
+    glPushMatrix();
+    glTranslatef(0.0, 2.5, 35.0); // Adjust the position of the body
+    glScalef(-1.0, 1.0, 0.3); // Adjust the size of the body
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    // Draw arms
+    glColor3f(0.0, 1.0, 0.0); // Green color for the arms
+
+    // Left arm
+    glPushMatrix();
+    glTranslatef(-0.65, 2.0, 35.0); // Adjust the position of the left arm
+    glScalef(0.2, 2.0, 0.2); // Adjust the size of the left arm
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    // Right arm
+    glPushMatrix();
+    glTranslatef(0.65, 2.0, 35.0); // Adjust the position of the right arm
+    glScalef(0.2, 2.0, 0.2); // Adjust the size of the right arm
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    // Draw legs
+    glColor3f(1.0, 1.0, 0.0); // Yellow color for the legs
+    // Left leg
+    glPushMatrix();
+    glTranslatef(-0.20, 0.0, 35.0); // Adjust the position of the left leg
+    glScalef(0.2, 5.0, 0.2); // Adjust the size of the left leg
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    // Right leg
+    glPushMatrix();
+    glTranslatef(0.20, 0.0, 35.0); // Adjust the position of the right leg
+    glScalef(0.2, 5.0, 0.2); // Adjust the size of the right leg
+    glutSolidCube(1.0);
+    glPopMatrix();
+}
+
+void drawRoad()
+{
+    /// road |
+    glTranslatef(-2.0, 0.25, 35.0);
+    glColor3f(0.5, 0.5, 0.5);
+    glBegin(GL_QUADS);
+    glVertex3f(-2.0, 0.0, -10.0);
+    glVertex3f(-2.0, 0.0, 10.0);
+    glVertex3f(2.0, 0.0, 10.0);
+    glVertex3f(2.0, 0.0, -10.0);
+    glEnd();
+}
 
 static void display(void)
 {
@@ -340,16 +403,13 @@ static void display(void)
 
     /// Dracula color gound
     glPushMatrix();
-    glTranslated(-50,-0.5,-50);
+    glTranslated(-50,0.0,-50);
     glScaled(100,0.2,100);
-    cube(0.2,0.2,0.2);
+    cube(0.13,0.54,0.13);
     glPopMatrix();
 
 
 //Ground
-    drawGreenGound();
-
-
     vaticalWallLeft();
 
     vaticalWallRight();
@@ -360,11 +420,13 @@ static void display(void)
 
     horizontalRoofTop();
 
-    Siri();
+    stairs();
 
     drawTree();
     drawTreeOne();
+    drawHuman();
 
+    drawRoad();
 
     glutSwapBuffers();
 }
